@@ -1,0 +1,38 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Donor Cards{% endblock %}
+
+{% block sidebar %}
+<a href="{% url 'entity-dashboard' %}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+<a href="{% url 'entity-donors' %}"><i class="bi bi-people"></i> Donors</a>
+<a href="{% url 'entity-donations' %}"><i class="bi bi-droplet"></i> Donations</a>
+<a href="{% url 'entity-inventory' %}"><i class="bi bi-box-seam"></i> Blood Stock</a>
+<a href="{% url 'entity-cards' %}"><i class="bi bi-credit-card"></i> Donor Cards</a>
+{% endblock %}
+
+{% block content %}
+<h4 class="mb-4">Donor Cards</h4>
+<table class="table table-bordered bg-white">
+    <thead class="table-dark">
+        <tr><th>Donor</th><th>Card Number</th><th>Date Issued</th><th>Expiry Date</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+        {% for card in cards %}
+        <tr>
+            <td>{{ card.donor.full_name }}</td>
+            <td>{{ card.card_number }}</td>
+            <td>{{ card.date_issued }}</td>
+            <td>{{ card.expiry_date }}</td>
+            <td>
+                {% if card.expiry_date < today %}
+                    <span class="badge bg-danger">Expired</span>
+                {% else %}
+                    <span class="badge bg-success">Active</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5" class="text-center text-muted">No cards issued yet</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

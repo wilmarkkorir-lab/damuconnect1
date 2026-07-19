@@ -1,0 +1,9 @@
+Django>=4.2,<5.0
+djangorestframework
+djangorestframework-simplejwt
+drf-spectacular
+django-cors-headers
+django-axes
+django-environ
+mysqlclient
+python-dateutil

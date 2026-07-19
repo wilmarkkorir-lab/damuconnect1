@@ -1,0 +1,26 @@
+WARNING 2026-07-10 09:40:33,168 log Bad Request: /api/auth/register/
+WARNING 2026-07-10 09:41:09,429 log Bad Request: /api/auth/register/
+WARNING 2026-07-10 10:30:48,588 log Not Found: /api/core/auth/login/
+WARNING 2026-07-10 10:30:56,076 log Not Found: /api/core/auth/login/
+WARNING 2026-07-10 10:30:57,255 log Not Found: /api/core/auth/login/
+WARNING 2026-07-10 10:32:15,814 log Not Found: /api/core/auth/login/
+WARNING 2026-07-10 10:32:15,841 log Not Found: /api/core/auth/login/
+WARNING 2026-07-10 10:33:17,839 log Not Found: /api/core/auth/login/
+WARNING 2026-07-10 10:33:19,154 log Not Found: /api/core/auth/login/
+WARNING 2026-07-10 10:33:20,387 log Not Found: /api/core/auth/login/
+WARNING 2026-07-10 10:33:21,419 log Not Found: /api/core/auth/login/
+WARNING 2026-07-13 09:16:56,160 log Not Found: /
+WARNING 2026-07-13 09:16:56,299 log Not Found: /favicon.ico
+WARNING 2026-07-13 10:08:12,119 log Not Found: /api/cooperative/notices/
+WARNING 2026-07-14 07:46:05,220 log Not Found: /
+WARNING 2026-07-14 07:46:13,666 log Not Found: /login/
+WARNING 2026-07-14 08:12:00,453 log Unauthorized: /api/entities/
+WARNING 2026-07-14 08:15:55,800 log Not Found: /api/entities/8/approval/
+WARNING 2026-07-14 09:35:48,860 log Unauthorized: /api/entities/profile/
+WARNING 2026-07-14 09:36:24,091 log Unauthorized: /api/entities/profile/
+WARNING 2026-07-14 10:43:35,721 log Not Found: /api/donations/2/
+WARNING 2026-07-14 10:43:52,989 log Not Found: /api/donations/1/
+WARNING 2026-07-14 10:44:39,401 log Not Found: /api/donations/5/
+WARNING 2026-07-14 10:45:44,396 log Not Found: /api/donations/2/
+ERROR 2026-07-19 08:55:33,146 log Internal Server Error: /api/chat/general/
+ERROR 2026-07-19 08:57:13,019 log Internal Server Error: /api/chat/general/

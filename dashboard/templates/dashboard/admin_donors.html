@@ -1,0 +1,39 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Donors{% endblock %}
+
+{% block sidebar %}
+<a href="{% url 'admin-dashboard' %}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+<a href="{% url 'admin-entities' %}"><i class="bi bi-building"></i> Entities</a>
+<a href="{% url 'admin-donors' %}"><i class="bi bi-people"></i> Donors</a>
+<a href="{% url 'admin-donations' %}"><i class="bi bi-droplet"></i> Donations</a>
+<a href="{% url 'admin-inventory' %}"><i class="bi bi-box-seam"></i> Blood Stock</a>
+{% endblock %}
+
+{% block content %}
+<h4 class="mb-4">All Donors</h4>
+<table class="table table-bordered bg-white">
+    <thead class="table-dark">
+        <tr><th>Name</th><th>Blood Type</th><th>Phone</th><th>Entity</th><th>Eligible</th><th>Last Donation</th></tr>
+    </thead>
+    <tbody>
+        {% for donor in donors %}
+        <tr>
+            <td>{{ donor.full_name }}</td>
+            <td><span class="badge bg-danger">{{ donor.blood_type }}</span></td>
+            <td>{{ donor.phone }}</td>
+            <td>{{ donor.entity.entity_name }}</td>
+            <td>
+                {% if donor.eligible %}
+                    <span class="badge bg-success">Yes</span>
+                {% else %}
+                    <span class="badge bg-secondary">No</span>
+                {% endif %}
+            </td>
+            <td>{{ donor.last_donation_date|default:"Never" }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6" class="text-center text-muted">No donors found</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

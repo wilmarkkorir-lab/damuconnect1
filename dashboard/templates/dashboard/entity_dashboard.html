@@ -1,0 +1,87 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Entity Dashboard{% endblock %}
+
+{% block sidebar %}
+<a href="{% url 'entity-dashboard' %}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+<a href="{% url 'entity-donors' %}"><i class="bi bi-people"></i> Donors</a>
+<a href="{% url 'entity-donations' %}"><i class="bi bi-droplet"></i> Donations</a>
+<a href="{% url 'entity-inventory' %}"><i class="bi bi-box-seam"></i> Blood Stock</a>
+<a href="{% url 'entity-cards' %}"><i class="bi bi-credit-card"></i> Donor Cards</a>
+{% endblock %}
+
+{% block content %}
+<h4 class="mb-4">Welcome, {{ request.user.username }} <small class="text-muted fs-6">({{ entity.entity_name }})</small></h4>
+
+{% if entity.status == 'pending' %}
+<div class="alert alert-warning"><i class="bi bi-clock"></i> Your entity is pending admin approval. Some features are limited.</div>
+{% elif entity.status == 'rejected' %}
+<div class="alert alert-danger"><i class="bi bi-x-circle"></i> Your entity has been rejected. Contact admin.</div>
+{% endif %}
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card text-white" style="background:#b71c1c;">
+            <div class="card-body">
+                <h6>My Donors</h6>
+                <h2>{{ total_donors }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h6>Total Donations</h6>
+                <h2>{{ total_donations }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <h6>Blood Stock Types</h6>
+                <h2>{{ total_stock }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning">
+            <div class="card-body">
+                <h6>Low Stock Alerts</h6>
+                <h2>{{ low_stock_count }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if low_stock_count > 0 %}
+<div class="alert alert-warning"><i class="bi bi-exclamation-triangle"></i> You have {{ low_stock_count }} blood type(s) with low stock. <a href="{% url 'entity-inventory' %}">View</a></div>
+{% endif %}
+
+<h5>Recent Donations</h5>
+<table class="table table-bordered bg-white">
+    <thead class="table-dark">
+        <tr><th>Donor</th><th>Blood Type</th><th>Date</th><th>Quantity</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+        {% for donation in recent_donations %}
+        <tr>
+            <td>{{ donation.donor.full_name }}</td>
+            <td><span class="badge bg-danger">{{ donation.donor.blood_type }}</span></td>
+            <td>{{ donation.donation_date }}</td>
+            <td>{{ donation.quantity }} unit(s)</td>
+            <td>
+                {% if donation.status == 'completed' %}
+                    <span class="badge bg-success">Completed</span>
+                {% elif donation.status == 'pending' %}
+                    <span class="badge bg-warning text-dark">Pending</span>
+                {% else %}
+                    <span class="badge bg-danger">Rejected</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5" class="text-center text-muted">No donations yet</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

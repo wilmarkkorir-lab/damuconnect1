@@ -1,0 +1,37 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Blood Stock{% endblock %}
+
+{% block sidebar %}
+<a href="{% url 'entity-dashboard' %}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+<a href="{% url 'entity-donors' %}"><i class="bi bi-people"></i> Donors</a>
+<a href="{% url 'entity-donations' %}"><i class="bi bi-droplet"></i> Donations</a>
+<a href="{% url 'entity-inventory' %}"><i class="bi bi-box-seam"></i> Blood Stock</a>
+<a href="{% url 'entity-cards' %}"><i class="bi bi-credit-card"></i> Donor Cards</a>
+{% endblock %}
+
+{% block content %}
+<h4 class="mb-4">Blood Stock</h4>
+<table class="table table-bordered bg-white">
+    <thead class="table-dark">
+        <tr><th>Blood Type</th><th>Units Available</th><th>Status</th><th>Last Updated</th></tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <td><span class="badge bg-danger fs-6">{{ stock.blood_type }}</span></td>
+            <td>{{ stock.units_available }}</td>
+            <td>
+                {% if stock.is_low %}
+                    <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle"></i> Low Stock</span>
+                {% else %}
+                    <span class="badge bg-success">OK</span>
+                {% endif %}
+            </td>
+            <td>{{ stock.last_updated|date:"d M Y H:i" }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4" class="text-center text-muted">No stock data yet</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
