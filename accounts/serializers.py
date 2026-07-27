@@ -1,9 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_bytes, force_str
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .models import User
+from .models import User, PasswordResetOTP
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -32,7 +29,6 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField(write_only=True)
 
     def validate(self, data):
-        # Pass request to authenticate so django-axes can track failed attempts
         request = self.context.get('request')
         user = authenticate(request=request, username=data['username'], password=data['password'])
         if not user:
@@ -44,7 +40,6 @@ class LoginSerializer(serializers.Serializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    # Safe read-only representation of a user — returned after login/register
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'role', 'phone')
@@ -81,25 +76,31 @@ class ForgotPasswordSerializer(serializers.Serializer):
             raise serializers.ValidationError("No account found with this email.")
         return value
 
-    def get_reset_data(self):
+    def send_otp(self):
+        from .utils import send_otp_email
         user = User.objects.get(email=self.validated_data['email'])
-        uid = urlsafe_base64_encode(force_bytes(user.pk))
-        token = default_token_generator.make_token(user)
-        return uid, token
+        otp_obj = PasswordResetOTP.generate_for(user)
+        send_otp_email(user.email, otp_obj.otp)
 
 
 class ResetPasswordSerializer(serializers.Serializer):
-    uid = serializers.CharField()
-    token = serializers.CharField()
+    email = serializers.EmailField()
+    otp = serializers.CharField(max_length=6)
     new_password = serializers.CharField(write_only=True, min_length=8)
 
     def validate(self, data):
         try:
-            pk = force_str(urlsafe_base64_decode(data['uid']))
-            user = User.objects.get(pk=pk)
-        except (User.DoesNotExist, ValueError):
-            raise serializers.ValidationError("Invalid reset link.")
-        if not default_token_generator.check_token(user, data['token']):
-            raise serializers.ValidationError("Reset link is invalid or has expired.")
+            user = User.objects.get(email=data['email'])
+        except User.DoesNotExist:
+            raise serializers.ValidationError("No account found with this email.")
+        try:
+            otp_obj = PasswordResetOTP.objects.filter(
+                user=user, otp=data['otp'], is_used=False
+            ).latest('created_at')
+        except PasswordResetOTP.DoesNotExist:
+            raise serializers.ValidationError("Invalid OTP.")
+        if otp_obj.is_expired():
+            raise serializers.ValidationError("OTP has expired. Please request a new one.")
         data['user'] = user
+        data['otp_obj'] = otp_obj
         return data

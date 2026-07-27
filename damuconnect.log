@@ -24,3 +24,302 @@ WARNING 2026-07-14 10:44:39,401 log Not Found: /api/donations/5/
 WARNING 2026-07-14 10:45:44,396 log Not Found: /api/donations/2/
 ERROR 2026-07-19 08:55:33,146 log Internal Server Error: /api/chat/general/
 ERROR 2026-07-19 08:57:13,019 log Internal Server Error: /api/chat/general/
+WARNING 2026-07-19 16:20:49,991 log Forbidden: /api/inventory/
+WARNING 2026-07-19 16:20:50,879 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:20:51,833 log Forbidden: /api/inventory/
+WARNING 2026-07-19 16:20:52,401 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:20:53,349 log Forbidden: /api/donations/
+WARNING 2026-07-19 16:20:53,988 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:20:54,899 log Forbidden: /api/donations/
+WARNING 2026-07-19 16:20:55,551 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:22:23,019 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:23:47,710 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:23:48,821 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:23:49,337 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:23:52,567 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:23:52,568 log Forbidden: /api/donations/
+WARNING 2026-07-19 16:23:54,105 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:23:54,120 log Forbidden: /api/donations/
+WARNING 2026-07-19 16:24:07,474 log Forbidden: /api/inventory/
+WARNING 2026-07-19 16:24:08,911 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:24:09,062 log Forbidden: /api/inventory/
+WARNING 2026-07-19 16:24:09,064 log Forbidden: /api/donations/
+WARNING 2026-07-19 16:24:10,424 log Forbidden: /api/donors/
+WARNING 2026-07-19 16:24:10,609 log Forbidden: /api/inventory/
+WARNING 2026-07-19 16:24:10,658 log Forbidden: /api/donations/
+WARNING 2026-07-19 16:24:10,953 log Forbidden: /api/inventory/alerts/
+WARNING 2026-07-19 16:24:12,645 log Forbidden: /api/inventory/
+WARNING 2026-07-19 16:24:18,467 log Forbidden: /api/inventory/alerts/
+WARNING 2026-07-19 17:05:12,948 log Bad Request: /api/auth/forgot-password/
+WARNING 2026-07-19 17:06:24,218 log Bad Request: /api/auth/forgot-password/
+WARNING 2026-07-19 17:06:28,525 log Bad Request: /api/auth/forgot-password/
+WARNING 2026-07-19 17:06:46,393 log Bad Request: /api/auth/forgot-password/
+WARNING 2026-07-19 17:06:57,023 log Bad Request: /api/auth/forgot-password/
+WARNING 2026-07-19 17:06:59,879 log Bad Request: /api/auth/forgot-password/
+WARNING 2026-07-19 17:10:23,364 log Bad Request: /api/auth/forgot-password/
+WARNING 2026-07-19 17:11:17,162 log Bad Request: /api/auth/register/
+WARNING 2026-07-19 17:11:25,931 log Bad Request: /api/auth/register/
+WARNING 2026-07-19 17:18:27,595 log Bad Request: /api/auth/register/
+WARNING 2026-07-19 17:59:10,230 database AXES: New login failure by {username: "********************", ip_address: "********************", user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.129.1 Chrome/148.0.7778.280 Electron/42.6.0 Safari/537.36", path_info: "/api/auth/login/"}. Created new record in the database.
+WARNING 2026-07-19 17:59:10,690 log Bad Request: /api/auth/login/
+WARNING 2026-07-19 17:59:24,945 log Forbidden: /api/donors/
+WARNING 2026-07-19 17:59:24,988 log Forbidden: /api/donations/
+WARNING 2026-07-19 17:59:25,000 log Forbidden: /api/inventory/
+WARNING 2026-07-19 17:59:26,500 log Forbidden: /api/donations/
+WARNING 2026-07-19 17:59:26,502 log Forbidden: /api/donors/
+WARNING 2026-07-19 17:59:26,525 log Forbidden: /api/inventory/
+WARNING 2026-07-19 17:59:28,697 log Forbidden: /api/donors/
+WARNING 2026-07-19 17:59:30,212 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:22:08,404 log Not Found: /
+WARNING 2026-07-19 18:22:15,058 log Not Found: /docs/
+WARNING 2026-07-19 18:27:03,238 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:33:21,201 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:33:22,815 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:33:24,369 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:35:39,432 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:36:23,202 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:36:24,781 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:36:26,307 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:38:23,140 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:38:24,685 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:38:24,881 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:38:26,418 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:38:27,113 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:38:28,624 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:38:34,196 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:38:35,340 log Forbidden: /api/donors/cards/
+WARNING 2026-07-19 18:38:35,713 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:38:36,894 log Forbidden: /api/donors/cards/
+WARNING 2026-07-19 18:38:37,366 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:38:38,374 log Forbidden: /api/donations/
+WARNING 2026-07-19 18:38:38,876 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:38:39,912 log Forbidden: /api/donations/
+WARNING 2026-07-19 18:38:40,461 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:38:41,044 log Forbidden: /api/inventory/alerts/
+WARNING 2026-07-19 18:38:41,073 log Forbidden: /api/inventory/
+WARNING 2026-07-19 18:38:42,090 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:38:42,580 log Forbidden: /api/inventory/
+WARNING 2026-07-19 18:38:42,601 log Forbidden: /api/inventory/alerts/
+WARNING 2026-07-19 18:40:05,098 log Bad Request: /api/auth/logout/
+WARNING 2026-07-19 18:40:32,168 database AXES: New login failure by {username: "********************", ip_address: "********************", user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.129.1 Chrome/148.0.7778.280 Electron/42.6.0 Safari/537.36", path_info: "/api/auth/login/"}. Created new record in the database.
+WARNING 2026-07-19 18:40:32,628 log Bad Request: /api/auth/login/
+WARNING 2026-07-19 18:40:46,113 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:40:47,701 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:40:47,746 log Forbidden: /api/inventory/
+WARNING 2026-07-19 18:40:47,747 log Forbidden: /api/donations/
+WARNING 2026-07-19 18:40:49,218 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:40:49,301 log Forbidden: /api/inventory/
+WARNING 2026-07-19 18:40:49,352 log Forbidden: /api/donations/
+WARNING 2026-07-19 18:40:52,652 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:40:54,165 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:41:05,290 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:41:06,803 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:41:06,804 log Forbidden: /api/donors/cards/
+WARNING 2026-07-19 18:41:07,906 log Forbidden: /api/donations/
+WARNING 2026-07-19 18:41:08,316 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:41:08,322 log Forbidden: /api/donors/cards/
+WARNING 2026-07-19 18:41:09,440 log Forbidden: /api/donations/
+WARNING 2026-07-19 18:41:10,045 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:41:10,085 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:41:11,295 log Forbidden: /api/donations/
+WARNING 2026-07-19 18:41:11,304 log Forbidden: /api/inventory/
+WARNING 2026-07-19 18:41:11,565 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:41:11,578 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:41:12,823 log Forbidden: /api/inventory/
+WARNING 2026-07-19 18:41:12,848 log Forbidden: /api/donations/
+WARNING 2026-07-19 18:41:13,078 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:41:14,592 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:41:15,328 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:41:16,106 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:41:16,856 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:41:51,929 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:41:53,687 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:42:00,454 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:42:00,455 log Forbidden: /api/donors/cards/
+WARNING 2026-07-19 18:42:02,007 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:42:02,296 log Forbidden: /api/donors/cards/
+WARNING 2026-07-19 18:42:23,398 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:42:25,139 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:42:25,191 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:42:26,705 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:42:27,371 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:42:28,910 log Forbidden: /api/donors/
+WARNING 2026-07-19 18:42:32,888 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:42:34,439 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:43:53,362 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:44:25,588 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:55:02,436 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:55:04,059 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:55:05,624 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:55:07,361 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:58:31,260 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 18:59:27,049 log Not Found: /api/entities/profile/
+WARNING 2026-07-19 18:59:30,743 log Not Found: /api/entities/profile/
+WARNING 2026-07-19 18:59:58,405 log Not Found: /api/entities/profile/
+WARNING 2026-07-19 19:01:34,150 log Not Found: /api/entities/profile/
+WARNING 2026-07-19 19:04:51,206 log Forbidden: /api/entities/profile/
+WARNING 2026-07-19 19:09:36,811 log Unauthorized: /api/auth/profile/
+WARNING 2026-07-19 19:09:36,826 log Unauthorized: /api/auth/profile/
+WARNING 2026-07-19 19:09:36,946 log Unauthorized: /api/auth/refresh/
+WARNING 2026-07-19 19:09:36,950 log Unauthorized: /api/auth/refresh/
+WARNING 2026-07-19 19:12:49,303 log Bad Request: /api/auth/logout/
+WARNING 2026-07-19 19:14:06,422 log Bad Request: /api/auth/logout/
+ERROR 2026-07-19 19:18:44,057 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 1227, in _get_serializer
+    error(
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\drainage.py", line 120, in error
+    GENERATOR_STATS.emit(msg, 'error')
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\drainage.py", line 89, in emit
+    print(msg, file=sys.stderr)
+OSError: [Errno 22] Invalid argument
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\views.py", line 84, in get
+    return self._get_schema_response(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\views.py", line 92, in _get_schema_response
+    data=generator.get_schema(request=request, public=self.serve_public),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\generators.py", line 287, in get_schema
+    paths=self.parse(request, public),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\generators.py", line 258, in parse
+    operation = view.schema.get_operation(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 93, in get_operation
+    parameters = self._get_parameters()
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 265, in _get_parameters
+    **dict_helper(self._get_filter_parameters()),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 553, in _get_filter_parameters
+    for filter_backend in self.get_filter_backends():
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 547, in get_filter_backends
+    if not self._is_list_view():
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 136, in _is_list_view
+    serializer = self.get_response_serializers()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 378, in get_response_serializers
+    return self._get_serializer()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 1235, in _get_serializer
+    error(
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\drainage.py", line 120, in error
+    GENERATOR_STATS.emit(msg, 'error')
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\drainage.py", line 89, in emit
+    print(msg, file=sys.stderr)
+OSError: [Errno 22] Invalid argument
+ERROR 2026-07-19 19:18:44,803 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 1227, in _get_serializer
+    error(
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\drainage.py", line 120, in error
+    GENERATOR_STATS.emit(msg, 'error')
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\drainage.py", line 89, in emit
+    print(msg, file=sys.stderr)
+OSError: [Errno 22] Invalid argument
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\views.py", line 84, in get
+    return self._get_schema_response(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\views.py", line 92, in _get_schema_response
+    data=generator.get_schema(request=request, public=self.serve_public),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\generators.py", line 287, in get_schema
+    paths=self.parse(request, public),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\generators.py", line 258, in parse
+    operation = view.schema.get_operation(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 93, in get_operation
+    parameters = self._get_parameters()
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 265, in _get_parameters
+    **dict_helper(self._get_filter_parameters()),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 553, in _get_filter_parameters
+    for filter_backend in self.get_filter_backends():
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 547, in get_filter_backends
+    if not self._is_list_view():
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 136, in _is_list_view
+    serializer = self.get_response_serializers()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 378, in get_response_serializers
+    return self._get_serializer()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\openapi.py", line 1235, in _get_serializer
+    error(
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\drainage.py", line 120, in error
+    GENERATOR_STATS.emit(msg, 'error')
+  File "C:\Users\korir\AppData\Local\Programs\Python\Python311\Lib\site-packages\drf_spectacular\drainage.py", line 89, in emit
+    print(msg, file=sys.stderr)
+OSError: [Errno 22] Invalid argument
+WARNING 2026-07-19 20:09:35,024 log Unauthorized: /api/auth/profile/
+WARNING 2026-07-19 20:09:35,034 log Unauthorized: /api/auth/profile/
+WARNING 2026-07-20 09:47:01,148 log Not Found: /
+WARNING 2026-07-20 09:49:31,619 log Not Found: /docs/
+WARNING 2026-07-20 09:53:53,451 log Bad Request: /api/auth/logout/
+WARNING 2026-07-20 09:53:55,271 log Bad Request: /api/auth/logout/
+WARNING 2026-07-20 09:53:55,699 log Bad Request: /api/auth/logout/
+WARNING 2026-07-20 09:53:56,312 log Bad Request: /api/auth/logout/
+WARNING 2026-07-20 09:53:59,341 log Bad Request: /api/auth/logout/
+WARNING 2026-07-20 09:57:53,882 log Bad Request: /api/auth/logout/
+WARNING 2026-07-20 09:57:59,608 log Bad Request: /api/auth/logout/
+WARNING 2026-07-20 10:00:54,304 log Bad Request: /api/auth/register/
+WARNING 2026-07-20 10:34:23,956 log Not Found: / api/farmer/predict-disease/
+WARNING 2026-07-20 10:34:27,180 log Not Found: / api/farmer/predict-disease/
+WARNING 2026-07-20 10:34:29,465 log Not Found: / api/farmer/predict-disease/

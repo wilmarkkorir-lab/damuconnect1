@@ -23,6 +23,37 @@ def dashboard_login(request):
     return render(request, 'dashboard/login.html')
 
 
+def dashboard_register(request):
+    if request.user.is_authenticated:
+        return _redirect_by_role(request.user)
+    if request.method == 'POST':
+        username = request.POST.get('username', '').strip()
+        email = request.POST.get('email', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        password = request.POST.get('password', '')
+        role = request.POST.get('role', '').strip()
+
+        from accounts.models import User
+        error = None
+        if not all([username, email, phone, password, role]):
+            error = 'All fields are required.'
+        elif role == 'admin':
+            error = 'Admin accounts cannot be self-registered.'
+        elif len(password) < 8:
+            error = 'Password must be at least 8 characters.'
+        elif User.objects.filter(username=username).exists():
+            error = 'Username already taken.'
+        elif User.objects.filter(email=email).exists():
+            error = 'Email already registered.'
+        if error:
+            return render(request, 'dashboard/register.html', {'error': error})
+
+        user = User.objects.create_user(username=username, email=email, password=password, role=role, phone=phone)
+        login(request, user)
+        return _redirect_by_role(user)
+    return render(request, 'dashboard/register.html')
+
+
 @login_required(login_url='dashboard-login')
 def dashboard_logout(request):
     logout(request)

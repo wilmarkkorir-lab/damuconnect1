@@ -110,10 +110,11 @@ class ForgotPasswordView(APIView):
         serializer = ForgotPasswordSerializer(data=request.data)
         if not serializer.is_valid():
             return api_response("error", "Request failed.", serializer.errors, 400)
-        uid, token = serializer.get_reset_data()
-        # In production, email this link to the user
-        # For now, return the uid and token directly so it can be used via the API
-        return api_response("success", "Password reset token generated.", {"uid": uid, "token": token})
+        try:
+            serializer.send_otp()
+        except Exception:
+            return api_response("error", "Failed to send OTP email. Please try again later.", None, 500)
+        return api_response("success", "OTP sent to your email. It expires in 10 minutes.")
 
 
 class ResetPasswordView(APIView):
@@ -124,6 +125,9 @@ class ResetPasswordView(APIView):
         if not serializer.is_valid():
             return api_response("error", "Password reset failed.", serializer.errors, 400)
         user = serializer.validated_data['user']
+        otp_obj = serializer.validated_data['otp_obj']
         user.set_password(serializer.validated_data['new_password'])
         user.save()
+        otp_obj.is_used = True
+        otp_obj.save()
         return api_response("success", "Password reset successfully.")

@@ -11,12 +11,17 @@ from notifications.utils import send_notification
 class EntityProfileView(APIView):
 
     def get_permissions(self):
-        if self.request.method == 'POST':
+        if self.request.method in ('GET', 'POST'):
             return [IsAuthenticated()]
         return [IsEntity()]
 
     def get(self, request):
-        entity = request.user.entity_profile
+        if request.user.role != 'entity':
+            return api_response("error", "Only entity users have a profile.", None, 403)
+        try:
+            entity = request.user.entity_profile
+        except Exception:
+            return api_response("error", "Entity profile not found.", None, 404)
         return api_response("success", "Profile retrieved.", EntitySerializer(entity).data)
 
     def post(self, request):

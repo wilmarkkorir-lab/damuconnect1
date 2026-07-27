@@ -2,6 +2,18 @@ from rest_framework.views import exception_handler
 from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle
 from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.conf import settings
+
+
+def send_otp_email(to_email, otp):
+    send_mail(
+        subject='DamuConnect — Password Reset OTP',
+        message=f'Your DamuConnect password reset code is: {otp}\n\nThis code expires in 10 minutes. Do not share it with anyone.',
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[to_email],
+        fail_silently=False,
+    )
 
 
 def api_response(status, message, data=None, http_status=200):

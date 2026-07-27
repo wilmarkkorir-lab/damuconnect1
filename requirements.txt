@@ -7,3 +7,4 @@ django-axes
 django-environ
 mysqlclient
 python-dateutil
+groq

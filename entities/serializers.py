@@ -4,11 +4,13 @@ from .models import Entity
 
 class EntitySerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
+    user_id = serializers.IntegerField(source='user.id', read_only=True)
+    is_active = serializers.BooleanField(source='user.is_active', read_only=True)
 
     class Meta:
         model = Entity
         fields = (
-            'id', 'username', 'entity_name', 'entity_type',
+            'id', 'user_id', 'username', 'is_active', 'entity_name', 'entity_type',
             'address', 'contact_number', 'status', 'created_at',
         )
         read_only_fields = ('status', 'created_at')

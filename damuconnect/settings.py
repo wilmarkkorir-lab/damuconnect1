@@ -12,6 +12,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = [
+    'damuconnect.alwaysdata.net',
     'mysql-damuconnect.alwaysdata.net',
     '127.0.0.1',
     'localhost',
@@ -74,13 +75,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'damuconnect.wsgi.application'
 
 # Database credentials from .env
-DATABASES = {
+if env.bool('USE_SQLITE', default=False):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'damuconnect_db',
-            'USER': 'damuconnect',
-            'PASSWORD': 'modcom2026',
-            'HOST': 'mysql-damuconnect.alwaysdata.net',
+            'NAME': env('DB_NAME'),
+            'USER': env('DB_USER'),
+            'PASSWORD': env('DB_PASSWORD'),
+            'HOST': env('DB_HOST'),
             'OPTIONS': {
                 'sql_mode': 'STRICT_TRANS_TABLES',
             }
@@ -161,6 +170,7 @@ SIMPLE_JWT = {
 
 # CORS — only allow listed origins
 CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[])
+CORS_ALLOW_ALL_ORIGINS = env.bool('DEBUG', default=False)  # allow all in development
 CORS_ALLOW_CREDENTIALS = True
 # Only allow safe methods from unknown origins
 CORS_ALLOW_METHODS = ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT']
@@ -172,6 +182,19 @@ X_FRAME_OPTIONS = 'DENY'                           # block clickjacking
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
 GROQ_API_KEY = env('GROQ_API_KEY', default='')
+
+INFOBIP_API_KEY = env('INFOBIP_API_KEY', default='')
+INFOBIP_BASE_URL = env('INFOBIP_BASE_URL', default='')
+INFOBIP_SENDER = env('INFOBIP_SENDER', default='')
+
+# Email — Gmail SMTP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
+DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER', default='damuconnect@gmail.com')
 
 # Swagger docs
 SPECTACULAR_SETTINGS = {
