@@ -168,11 +168,12 @@ SIMPLE_JWT = {
     'TOKEN_OBTAIN_SERIALIZER': 'rest_framework_simplejwt.serializers.TokenObtainPairSerializer',
 }
 
-# CORS — only allow listed origins
-CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[])
-CORS_ALLOW_ALL_ORIGINS = env.bool('DEBUG', default=False)  # allow all in development
+CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+])
+CORS_ALLOW_ALL_ORIGINS = DEBUG   # allow all origins in development
 CORS_ALLOW_CREDENTIALS = True
-# Only allow safe methods from unknown origins
 CORS_ALLOW_METHODS = ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT']
 
 # Security headers — protect against common web attacks

@@ -323,3 +323,58 @@ WARNING 2026-07-20 10:00:54,304 log Bad Request: /api/auth/register/
 WARNING 2026-07-20 10:34:23,956 log Not Found: / api/farmer/predict-disease/
 WARNING 2026-07-20 10:34:27,180 log Not Found: / api/farmer/predict-disease/
 WARNING 2026-07-20 10:34:29,465 log Not Found: / api/farmer/predict-disease/
+WARNING 2026-07-27 07:38:50,067 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:51,193 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:52,480 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:53,360 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:54,207 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:54,774 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:55,192 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:55,635 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:56,340 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:56,989 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:57,501 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:57,989 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:58,542 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:59,019 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:38:59,779 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:39:00,280 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:39:00,719 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:39:01,297 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:39:01,843 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:39:02,367 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:39:03,054 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:39:03,652 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:39:04,222 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:39:04,774 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:41:21,216 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:41:31,631 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:42:39,165 log Unauthorized: /api/auth/register/
+WARNING 2026-07-27 07:42:56,198 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:43:24,128 log Unauthorized: /api/auth/login/
+WARNING 2026-07-27 07:44:57,682 database AXES: New login failure by {username: "********************", ip_address: "********************", user_agent: "curl/8.21.0", path_info: "/api/auth/login/"}. Created new record in the database.
+WARNING 2026-07-27 07:45:09,698 log Bad Request: /api/auth/login/
+WARNING 2026-07-27 07:51:21,432 log Forbidden: /api/inventory/
+WARNING 2026-07-27 07:51:21,434 log Forbidden: /api/donations/
+WARNING 2026-07-27 07:51:22,145 log Forbidden: /api/donors/
+WARNING 2026-07-27 07:51:24,645 log Forbidden: /api/donations/
+WARNING 2026-07-27 07:51:24,748 log Forbidden: /api/inventory/
+WARNING 2026-07-27 07:51:24,972 log Forbidden: /api/donors/
+WARNING 2026-07-27 07:51:31,972 log Forbidden: /api/donors/
+WARNING 2026-07-27 07:51:32,328 log Forbidden: /api/donations/
+WARNING 2026-07-27 07:51:32,474 log Forbidden: /api/inventory/
+WARNING 2026-07-27 07:51:34,208 log Forbidden: /api/donors/
+WARNING 2026-07-27 07:51:34,798 log Forbidden: /api/inventory/
+WARNING 2026-07-27 07:51:36,404 log Forbidden: /api/donations/
+WARNING 2026-07-27 07:51:38,354 log Forbidden: /api/inventory/
+WARNING 2026-07-27 07:51:38,427 log Forbidden: /api/donors/
+WARNING 2026-07-27 07:51:39,156 log Forbidden: /api/donations/
+WARNING 2026-07-27 07:51:41,035 log Forbidden: /api/donors/
+WARNING 2026-07-27 07:51:41,443 log Forbidden: /api/inventory/
+WARNING 2026-07-27 07:51:41,444 log Forbidden: /api/donations/
+WARNING 2026-07-27 07:51:48,551 log Forbidden: /api/donations/
+WARNING 2026-07-27 07:51:48,560 log Forbidden: /api/donors/
+WARNING 2026-07-27 07:51:48,586 log Forbidden: /api/inventory/
+WARNING 2026-07-27 07:51:50,813 log Forbidden: /api/donations/
+WARNING 2026-07-27 07:51:51,023 log Forbidden: /api/inventory/
+WARNING 2026-07-27 07:51:51,041 log Forbidden: /api/donors/
