@@ -378,3 +378,5 @@ WARNING 2026-07-27 07:51:48,586 log Forbidden: /api/inventory/
 WARNING 2026-07-27 07:51:50,813 log Forbidden: /api/donations/
 WARNING 2026-07-27 07:51:51,023 log Forbidden: /api/inventory/
 WARNING 2026-07-27 07:51:51,041 log Forbidden: /api/donors/
+WARNING 2026-08-10 10:35:39,550 log Unauthorized: /api/donors/profile/
+WARNING 2026-08-10 10:35:50,834 log Unauthorized: /api/donors/my-cards/

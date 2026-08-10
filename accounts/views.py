@@ -112,8 +112,8 @@ class ForgotPasswordView(APIView):
             return api_response("error", "Request failed.", serializer.errors, 400)
         try:
             serializer.send_otp()
-        except Exception as e:
-            return api_response("error", f"Failed to send OTP email: {str(e)}", None, 500)
+        except Exception:
+            return api_response("error", "Failed to send OTP email. Please try again later.", None, 500)
         return api_response("success", "OTP sent to your email. It expires in 10 minutes.")
 
 
