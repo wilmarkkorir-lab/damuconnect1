@@ -5,6 +5,7 @@ from .models import Donor, DonorCard
 from .serializers import DonorSerializer, DonorRegisterSerializer, DonorUpdateSerializer, DonorCardSerializer, IssueCardSerializer
 from notifications.utils import send_notification
 from django.utils import timezone
+from datetime import date
 from dateutil.relativedelta import relativedelta
 
 
