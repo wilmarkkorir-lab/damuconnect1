@@ -157,6 +157,46 @@ class DonorCardDeleteView(APIView):
         return api_response("success", "Donor card deleted.", None)
 
 
+class DonorCreateOwnProfileView(APIView):
+    permission_classes = (IsDonor,)
+
+    def post(self, request):
+        if hasattr(request.user, 'donor_profile'):
+            return api_response("error", "Donor profile already exists.", None, 400)
+
+        from entities.models import Entity
+        from accounts.models import User
+        system_user, _ = User.objects.get_or_create(
+            username='self-registered-system',
+            defaults={
+                'email': 'self-registered@damuconnect.local',
+                'role': 'entity',
+            }
+        )
+        default_entity, _ = Entity.objects.get_or_create(
+            entity_name="Self-Registered",
+            defaults={
+                'user': system_user,
+                'entity_type': 'clinic',
+                'status': 'approved',
+                'address': 'Online Self-Registration',
+                'contact_number': '0000000000',
+            }
+        )
+
+        data = request.data.copy()
+        data['entity'] = default_entity.id
+
+        serializer = DonorRegisterSerializer(data=data, context={'request': request})
+        if not serializer.is_valid():
+            return api_response("error", "Invalid data.", serializer.errors, 400)
+        donor = serializer.save()
+        donor.user = request.user
+        donor.save()
+        check_donor_eligibility(donor)
+        return api_response("success", "Donor profile created.", DonorSerializer(donor).data, 201)
+
+
 class DonorMyCardsView(APIView):
     permission_classes = (IsDonor,)
 
