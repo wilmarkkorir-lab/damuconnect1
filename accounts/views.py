@@ -5,6 +5,8 @@ from rest_framework_simplejwt.exceptions import TokenError
 
 from .serializers import RegisterSerializer, LoginSerializer, UserSerializer, UpdateProfileSerializer, ChangePasswordSerializer, ForgotPasswordSerializer, ResetPasswordSerializer
 from .utils import api_response, LoginRateThrottle
+from notifications.utils import send_notification
+from accounts.models import User
 
 
 class RegisterView(APIView):
@@ -18,6 +20,15 @@ class RegisterView(APIView):
 
         user = serializer.save()
         refresh = RefreshToken.for_user(user)
+
+        if user.role == 'donor':
+            entity_users = User.objects.filter(role='entity', is_active=True)
+            for entity_user in entity_users:
+                send_notification(
+                    entity_user,
+                    "New Donor Registered",
+                    f"A new donor has registered: {user.username} ({user.email}). Please register them in your system to add blood type and eligibility details."
+                )
 
         return api_response(
             "success",

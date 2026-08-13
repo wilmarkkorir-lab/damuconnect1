@@ -27,20 +27,17 @@ class DonorListCreateView(APIView):
     permission_classes = (IsAdminOrEntity,)
 
     def get(self, request):
-        if request.user.is_superuser or request.user.role == 'admin':
-            donors = Donor.objects.select_related('entity').all()
-        else:
-            donors = request.user.entity_profile.donors.select_related('entity').all()
+        donors = Donor.objects.select_related('entity').all()
 
-        search = request.query_params.get('search')
+        search = self.request.query_params.get('search')
         if search:
             donors = donors.filter(full_name__icontains=search) | donors.filter(blood_type__icontains=search)
 
-        blood_type = request.query_params.get('blood_type')
+        blood_type = self.request.query_params.get('blood_type')
         if blood_type:
             donors = donors.filter(blood_type=blood_type)
 
-        eligible = request.query_params.get('eligible')
+        eligible = self.request.query_params.get('eligible')
         if eligible is not None:
             donors = donors.filter(eligible=eligible.lower() == 'true')
 
@@ -63,8 +60,6 @@ class DonorDetailView(APIView):
             donor = Donor.objects.get(pk=pk)
         except Donor.DoesNotExist:
             return api_response("error", "Donor not found.", None, 404)
-        if request.user.role == 'entity' and donor.entity != request.user.entity_profile:
-            return api_response("error", "You do not have access to this donor.", None, 403)
         check_donor_eligibility(donor)
         return api_response("success", "Donor retrieved.", DonorSerializer(donor).data)
 
