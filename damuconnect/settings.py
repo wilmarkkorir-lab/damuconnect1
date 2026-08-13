@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'dashboard',
     'notifications',
     'chatbot',
+    'audit',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'axes.middleware.AxesMiddleware',   # must be last
+    'audit.middleware.AuditMiddleware',
 ]
 
 ROOT_URLCONF = 'damuconnect.urls'

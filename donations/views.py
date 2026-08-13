@@ -4,6 +4,16 @@ from accounts.utils import api_response
 from .models import Donation
 from .serializers import DonationSerializer, RecordDonationSerializer, UpdateDonationSerializer
 from notifications.utils import send_notification
+from rest_framework.pagination import PageNumberPagination
+import csv
+from django.http import HttpResponse
+from datetime import datetime
+
+
+class DonationPagination(PageNumberPagination):
+    page_size = 20
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 
 class DonationListCreateView(APIView):
@@ -12,22 +22,22 @@ class DonationListCreateView(APIView):
     def get(self, request):
         donations = Donation.objects.select_related('donor', 'entity').all()
 
-        # Filter by status e.g. ?status=completed
         status = request.query_params.get('status')
         if status:
             donations = donations.filter(status=status)
 
-        # Filter by blood type e.g. ?blood_type=O+
         blood_type = request.query_params.get('blood_type')
         if blood_type:
             donations = donations.filter(donor__blood_type=blood_type)
 
-        # Filter by date e.g. ?date=2024-01-01
         date = request.query_params.get('date')
         if date:
             donations = donations.filter(donation_date=date)
 
-        return api_response("success", "Donations retrieved.", DonationSerializer(donations, many=True).data)
+        paginator = DonationPagination()
+        page = paginator.paginate_queryset(donations, request)
+        serializer = DonationSerializer(page, many=True)
+        return paginator.get_paginated_response(serializer.data)
 
     def post(self, request):
         if request.user.role != 'entity':
@@ -80,3 +90,41 @@ class DonorDonationHistoryView(APIView):
         except Exception:
             return api_response("error", "Donor profile not found.", None, 404)
         return api_response("success", "Donation history retrieved.", DonationSerializer(donations, many=True).data)
+
+
+class DonationExportCSVView(APIView):
+    permission_classes = (IsAdminOrEntity,)
+
+    def get(self, request):
+        donations = Donation.objects.select_related('donor', 'entity').all()
+
+        status = request.query_params.get('status')
+        if status:
+            donations = donations.filter(status=status)
+
+        blood_type = request.query_params.get('blood_type')
+        if blood_type:
+            donations = donations.filter(donor__blood_type=blood_type)
+
+        date = request.query_params.get('date')
+        if date:
+            donations = donations.filter(donation_date=date)
+
+        response = HttpResponse(content_type='text/csv')
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        response['Content-Disposition'] = f'attachment; filename="donations_{timestamp}.csv"'
+
+        writer = csv.writer(response)
+        writer.writerow(['Donor', 'Blood Type', 'Entity', 'Date', 'Units', 'Status'])
+
+        for donation in donations:
+            writer.writerow([
+                donation.donor.full_name,
+                donation.donor.blood_type,
+                donation.entity.entity_name,
+                donation.donation_date,
+                donation.quantity,
+                donation.status,
+            ])
+
+        return response

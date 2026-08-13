@@ -10,14 +10,42 @@ import secrets
 
 class DonorSerializer(serializers.ModelSerializer):
     entity_name = serializers.CharField(source='entity.entity_name', read_only=True)
+    recent_donations = serializers.SerializerMethodField()
+    recent_cards = serializers.SerializerMethodField()
 
     class Meta:
         model = Donor
         fields = (
             'id', 'full_name', 'email', 'phone', 'blood_type',
             'date_of_birth', 'last_donation_date', 'eligible', 'entity_name',
+            'recent_donations', 'recent_cards',
         )
         read_only_fields = ('eligible',)
+
+    def get_recent_donations(self, obj):
+        recent = obj.donations.select_related('entity').order_by('-donation_date')[:5]
+        return [
+            {
+                'date': d.donation_date,
+                'entity': d.entity.entity_name,
+                'quantity': d.quantity,
+                'status': d.status,
+            }
+            for d in recent
+        ]
+
+    def get_recent_cards(self, obj):
+        recent = obj.cards.select_related('entity').order_by('-date_issued')[:3]
+        return [
+            {
+                'card_number': c.card_number,
+                'entity': c.entity.entity_name,
+                'date_issued': c.date_issued,
+                'expiry_date': c.expiry_date,
+                'is_expired': c.expiry_date < timezone.now().date(),
+            }
+            for c in recent
+        ]
 
 
 class DonorRegisterSerializer(serializers.ModelSerializer):

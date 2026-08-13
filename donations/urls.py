@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import DonationListCreateView, DonationDetailView, DonorDonationHistoryView
+from .views import DonationListCreateView, DonationDetailView, DonorDonationHistoryView, DonationExportCSVView
 
 urlpatterns = [
-    path('', DonationListCreateView.as_view(), name='donation-list-create'),        # GET/POST
-    path('<int:pk>/', DonationDetailView.as_view(), name='donation-detail'),        # GET/PATCH
-    path('history/', DonorDonationHistoryView.as_view(), name='donation-history'),  # GET donor history
+    path('', DonationListCreateView.as_view(), name='donation-list-create'),
+    path('<int:pk>/', DonationDetailView.as_view(), name='donation-detail'),
+    path('history/', DonorDonationHistoryView.as_view(), name='donation-history'),
+    path('export/', DonationExportCSVView.as_view(), name='donation-export'),
 ]

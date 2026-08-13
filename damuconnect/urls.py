@@ -33,6 +33,9 @@ urlpatterns = [
     # Chatbot — general and smart chat
     path('api/chat/', include('chatbot.urls')),
 
+    # Audit logs — admin views system activity
+    path('api/audit/', include('audit.urls')),
+
     # Swagger docs
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]
