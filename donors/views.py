@@ -68,8 +68,6 @@ class DonorDetailView(APIView):
             donor = Donor.objects.get(pk=pk)
         except Donor.DoesNotExist:
             return api_response("error", "Donor not found.", None, 404)
-        if request.user.role == 'entity' and donor.entity != request.user.entity_profile:
-            return api_response("error", "You do not have access to this donor.", None, 403)
         serializer = DonorUpdateSerializer(donor, data=request.data, partial=True)
         if not serializer.is_valid():
             return api_response("error", "Invalid data.", serializer.errors, 400)
@@ -82,8 +80,6 @@ class DonorDetailView(APIView):
             donor = Donor.objects.get(pk=pk)
         except Donor.DoesNotExist:
             return api_response("error", "Donor not found.", None, 404)
-        if request.user.role == 'entity' and donor.entity != request.user.entity_profile:
-            return api_response("error", "You do not have access to this donor.", None, 403)
         donor.delete()
         return api_response("success", "Donor deleted.", None)
 
