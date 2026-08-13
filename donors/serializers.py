@@ -3,6 +3,9 @@ from .models import Donor, DonorCard
 from entities.models import Entity
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
+from accounts.models import User
+from accounts.utils import send_otp_email
+import secrets
 
 
 class DonorSerializer(serializers.ModelSerializer):
@@ -42,13 +45,40 @@ class DonorRegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         request = self.context['request']
         if request.user.is_superuser or request.user.role == 'admin':
-            # Admin must provide entity
             if 'entity' not in validated_data:
                 raise serializers.ValidationError({"entity": "Admin must specify an entity for the donor."})
         else:
-            # Entity is automatically set to the logged in entity
             validated_data['entity'] = request.user.entity_profile
-        return Donor.objects.create(**validated_data)
+
+        donor = Donor.objects.create(**validated_data)
+
+        if donor.user is None:
+            base_username = donor.email.split('@')[0]
+            username = base_username
+            counter = 1
+            while User.objects.filter(username=username).exists():
+                username = f"{base_username}{counter}"
+                counter += 1
+
+            temp_password = secrets.token_urlsafe(8)
+            user = User.objects.create_user(
+                username=username,
+                email=donor.email,
+                password=temp_password,
+                role='donor',
+            )
+            donor.user = user
+            donor.save()
+
+            try:
+                send_otp_email(
+                    donor.email,
+                    f"Your DamuConnect donor account has been created.\n\nUsername: {username}\nTemporary password: {temp_password}\n\nPlease log in and change your password."
+                )
+            except Exception:
+                pass
+
+        return donor
 
 
 class DonorUpdateSerializer(serializers.ModelSerializer):
