@@ -25,9 +25,6 @@ class RecordDonationSerializer(serializers.ModelSerializer):
         fields = ('donor', 'quantity', 'status')
 
     def validate_donor(self, donor):
-        entity = self.context['request'].user.entity_profile
-        if donor.entity != entity:
-            raise serializers.ValidationError("This donor does not belong to your entity.")
         if not donor.eligible:
             raise serializers.ValidationError("This donor is not currently eligible to donate.")
         return donor

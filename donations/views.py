@@ -10,10 +10,7 @@ class DonationListCreateView(APIView):
     permission_classes = (IsAdminOrEntity,)
 
     def get(self, request):
-        if request.user.is_superuser or request.user.role == 'admin':
-            donations = Donation.objects.select_related('donor', 'entity').all()
-        else:
-            donations = request.user.entity_profile.donations.select_related('donor', 'entity').all()
+        donations = Donation.objects.select_related('donor', 'entity').all()
 
         # Filter by status e.g. ?status=completed
         status = request.query_params.get('status')
