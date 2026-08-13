@@ -664,3 +664,5 @@ WARNING 2026-08-11 14:09:14,457 log Unauthorized: /api/auth/profile/
 WARNING 2026-08-11 14:11:01,658 log Bad Request: /api/entities/profile/
 WARNING 2026-08-11 14:11:42,987 log Bad Request: /api/donors/
 WARNING 2026-08-11 14:13:53,790 log Forbidden: /api/donors/
+WARNING 2026-08-13 08:22:31,829 database AXES: New login failure by {username: "********************", ip_address: "********************", user_agent: "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.22621.7517", path_info: "/api/auth/login/"}. Created new record in the database.
+WARNING 2026-08-13 08:22:31,837 log Bad Request: /api/auth/login/
