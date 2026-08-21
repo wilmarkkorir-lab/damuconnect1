@@ -5,19 +5,30 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from accounts.utils import api_response
 
-client = Groq(api_key=settings.GROQ_API_KEY)
+# Initialize Groq client only if API key is configured
+client = None
+if settings.GROQ_API_KEY:
+    client = Groq(api_key=settings.GROQ_API_KEY)
 
 
 def ask_groq(system_prompt, user_message):
     """Send a message to Groq and return the reply."""
+    if not client:
+        raise Exception("AI service is not configured. Please contact the administrator.")
     chat = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="qwen/qwen3.6-27b",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_message},
         ],
     )
-    return chat.choices[0].message.content
+    reply = chat.choices[0].message.content
+    # Strip thinking tags that some models include
+    if "</think>" in reply:
+        reply = reply.split("</think>")[-1].strip()
+    if "<think>" in reply:
+        reply = reply.split("<think>")[0].strip()
+    return reply.strip()
 
 
 def get_admin_data():
@@ -126,10 +137,16 @@ class GeneralChatView(APIView):
         if not message:
             return api_response("error", "Message is required.", None, 400)
 
-        system_prompt = """You are a helpful blood donation assistant for DamuConnect, 
-        a blood donation management system in Kenya. Answer general questions about 
-        blood donation, eligibility, blood types, health benefits, and the donation process. 
-        Keep answers clear, friendly and concise."""
+        system_prompt = """You are a strict blood donation assistant for DamuConnect, Kenya's national blood management system.
+
+RULES:
+1. ONLY answer questions about: blood donation, blood types, eligibility, donation process, hospitals, blood banks, clinics, inventory, donors, and how to use the DamuConnect system.
+2. If asked about anything else (politics, sports, religion, cooking, travel, entertainment, general knowledge, etc.), politely refuse and redirect: "I only help with blood donation and DamuConnect system questions. Ask me about eligibility, blood types, or how to use the system."
+3. Keep answers SHORT — maximum 2 sentences. Be direct and factual.
+4. Never make up information. If unsure, say "I don't have that information. Please contact your hospital or blood bank."
+5. For DamuConnect system questions, guide users: "Go to [section name] in your dashboard" or "Contact your entity admin."
+
+TONE: Professional, brief, helpful."""
 
         try:
             reply = ask_groq(system_prompt, message)
@@ -162,15 +179,19 @@ class SmartChatView(APIView):
         else:
             return api_response("error", "Unknown role.", None, 403)
 
-        system_prompt = f"""You are a smart assistant for DamuConnect, a blood donation 
-        management system in Kenya. {role_context}
+        system_prompt = f"""You are a strict assistant for DamuConnect, Kenya's national blood management system. {role_context}
 
-        Here is the current data from the system:
-        {data}
+RULES:
+1. ONLY answer questions about: blood donation, blood types, eligibility, donation process, hospitals, blood banks, clinics, inventory, donors, and how to use the DamuConnect system.
+2. If asked about anything else (politics, sports, religion, cooking, travel, entertainment, general knowledge, etc.), politely refuse: "I only help with blood donation and DamuConnect system questions."
+3. Use ONLY the provided system data below. Do NOT make up information. If the data doesn't contain the answer, say: "I don't have that information. Please check your dashboard or contact your admin."
+4. Keep answers SHORT — maximum 2 sentences. Be direct and factual.
+5. For system navigation questions, guide users to the correct dashboard section.
 
-        Use this data to answer the user's question accurately and in a friendly, 
-        human-readable way. If the answer is not in the data, say so honestly.
-        Keep answers concise and helpful."""
+SYSTEM DATA:
+{data}
+
+TONE: Professional, brief, helpful."""
 
         try:
             reply = ask_groq(system_prompt, message)
